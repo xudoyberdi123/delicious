@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Delicious - Food Blog Template | Contact</title>
+
+    {% include 'css_for_include.html' %}
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="{% static 'img/core-img/salad.png' %}" alt="">
+    </div>
+
+    <!-- Search Wrapper -->
+    <div class="search-wrapper">
+        <!-- Close Btn -->
+        <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form action="#" method="post">
+                        <input type="search" name="search" placeholder="Type any keywords...">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-between">
+                    <!-- Breaking News -->
+                    <div class="col-12 col-sm-6">
+                        <div class="breaking-news">
+                            <div id="breakingNewsTicker" class="ticker">
+                                <ul>
+                                    <li><a href="#">Hello World!</a></li>
+                                    <li><a href="#">Welcome to Colorlib Family.</a></li>
+                                    <li><a href="#">Hello Delicious!</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Social Info -->
+                    <div class="col-12 col-sm-6">
+                        <div class="top-social-info text-right">
+
+                             {% include 'top_social_info.html' %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="delicious-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="deliciousNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+
+                             {% include 'nav.html' %}
+
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url({% static 'img/bg-img/breadcumb4.jpg' %});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-text text-center">
+                        <h2>Recipe</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Contact Information Area Start ##### -->
+    <div class="contact-information-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="logo mb-80">
+                        <img src="{% static 'img/core-img/logo.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Contact Text -->
+                <div class="col-12 col-lg-5">
+                    <div class="contact-text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus.</p>
+                        <p>Orci varius natoque penatibus et magnis dis ac pellentesque tortor. Aenean congue parturient montes, nascetur ridiculus mus.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-3">
+                    <!-- Single Contact Information -->
+                    <div class="single-contact-information mb-30">
+                        <h6>Address:</h6>
+                        <p>481 Creekside Lane Avila <br>Beach, CA 93424</p>
+                    </div>
+                    <!-- Single Contact Information -->
+                    <div class="single-contact-information mb-30">
+                        <h6>Phone:</h6>
+                        <p>+53 345 7953 32453 <br>+53 345 7557 822112</p>
+                    </div>
+                    <!-- Single Contact Information -->
+                    <div class="single-contact-information mb-30">
+                        <h6>Email:</h6>
+                        <p>yourmail@gmail.com</p>
+                    </div>
+                </div>
+
+                <!-- Newsletter Area -->
+                <div class="col-12 col-lg-4">
+                    <div class="newsletter-form bg-img bg-overlay" style="background-image: url({% static 'img/bg-img/bg1.jpg' %});">
+                        <form action="#" method="post">
+                            <input type="email" name="email" placeholder="Subscribe to newsletter">
+                            <button type="submit" class="btn delicious-btn w-100">Subscribe</button>
+                        </form>
+                        <p>Fusce nec ante vitae lacus aliquet vulputate. Donec sceleri sque accumsan molestie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Contact Information Area End ##### -->
+
+    <!-- ##### Contact Form Area Start ##### -->
+    <div class="contact-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h3>Get In Touch</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+
+                    {% include 'contect_form_area.html' %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Contact Form Area End ##### -->
+
+    <!-- ##### Google Maps ##### -->
+    <div class="map-area">
+        <div id="googleMap"></div>
+    </div>
+
+
+   {% include 'footer_for_include.html' %}
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
+    <script src="{% static 'js/google-map/map-active.js' %}"></script>
+</body>
+
+</html>

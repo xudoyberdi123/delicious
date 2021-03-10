@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Delicious - Food Blog Template | Blog Post</title>
+
+
+    {% include 'css_for_include.html' %}
+    {% load static %}
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="{% static 'img/core-img/salad.png' %}" alt="">
+    </div>
+
+    <!-- Search Wrapper -->
+    <div class="search-wrapper">
+        <!-- Close Btn -->
+        <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form action="#" method="post">
+                        <input type="search" name="search" placeholder="Type any keywords...">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-between">
+                    <!-- Breaking News -->
+                    <div class="col-12 col-sm-6">
+                        <div class="breaking-news">
+                            <div id="breakingNewsTicker" class="ticker">
+                                <ul>
+                                    <li><a href="#">Hello World!</a></li>
+                                    <li><a href="#">Welcome to Colorlib Family.</a></li>
+                                    <li><a href="#">Hello Delicious!</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Social Info -->
+                    <div class="col-12 col-sm-6">
+                        <div class="top-social-info text-right">
+
+                             {% include 'top_social_info.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="delicious-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="deliciousNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+
+                             {% include 'nav.html' %}
+
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url({% static 'img/bg-img/breadcumb2.jpg' %});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-text text-center">
+                        <h2>Blog</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Blog Area Start ##### -->
+    <div class="blog-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="blog-posts-area">
+                        {% for i in blog %}
+                            {% if forloop.counter0 < 5 %}
+
+                            <!-- Single Blog Area -->
+                            <div class="single-blog-area mb-80">
+                                <!-- Thumbnail -->
+                                <div class="blog-thumbnail">
+                                    <img src="{% static 'img/blog-img/1.jpg' %}" alt="">
+                                    <!-- Post Date -->
+                                    <div class="post-date">
+                                        <a href="#"> <span>{{ i.created_at }}</span> </a>
+                                    </div>
+                                </div>
+                                <!-- Content -->
+                                <div class="blog-content">
+                                    <a href="#" class="post-title">{{ i.title }}</a>
+                                    <div class="meta-data">by <a href="#">{{ i.creator }}</a> in <a href="#">{{ i.blog_category.name }}</a>
+                                    </div>
+                                    <p>{{ i.text }}</p>
+                                    <a href="#" class="btn delicious-btn mt-30">Read More</a>
+                                </div>
+                            </div>
+
+                            {% endif %}
+                        {% endfor %}
+
+
+
+                    </div>
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item active"><a class="page-link" href="#">01.</a></li>
+                            <li class="page-item"><a class="page-link" href="#">02.</a></li>
+                            <li class="page-item"><a class="page-link" href="#">03.</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="blog-sidebar-area">
+
+                        <!-- Widget -->
+                        <div class="single-widget mb-80">
+                            <h6>Archive</h6>
+                            <ul class="list">
+                                <li><a href="#">March 2018</a></li>
+                                <li><a href="#">February 2018</a></li>
+                                <li><a href="#">January 2018</a></li>
+                                <li><a href="#">December 2017</a></li>
+                                <li><a href="#">November 2017</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Widget -->
+                        <div class="single-widget mb-80">
+                            <h6>Categories</h6>
+                            <ul class="list">
+                                <li><a href="#">Restaurants</a></li>
+                                <li><a href="#">Food &amp; Drinks</a></li>
+                                <li><a href="#">Vegans</a></li>
+                                <li><a href="#">Events &amp; Lifestyle</a></li>
+                                <li><a href="#">Uncategorized</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Widget -->
+                        <div class="single-widget mb-80">
+                            <h6>Newsletter</h6>
+
+                            <!-- Form -->
+                            <div class="newsletter-form bg-img bg-overlay" style="background-image: url({% static 'img/bg-img/bg1.jpg' %});">
+                                <form action="#" method="post">
+                                    <input type="email" name="email" placeholder="Subscribe to newsletter">
+                                    <button type="submit" class="btn delicious-btn w-100">Subscribe</button>
+                                </form>
+                                <p>Fusce nec ante vitae lacus aliquet vulputate. Donec sceleri sque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+                            </div>
+                        </div>
+
+                        <!-- Widget -->
+                        <div class="single-widget mb-80">
+                            <div class="quote-area text-center">
+                                <span>"</span>
+                                <h4>Nothing is better than going home to family and eating good food and relaxing</h4>
+                                <p>John Smith</p>
+                                <div class="date-comments d-flex justify-content-between">
+                                    <div class="date">January 04, 2018</div>
+                                    <div class="comments">2 Comments</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Blog Area End ##### -->
+
+
+
+   {% include 'footer_for_include.html' %}
+
+
+</body>
+
+</html>

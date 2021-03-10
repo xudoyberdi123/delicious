@@ -1,0 +1,22 @@
+INSERT INTO restourant_recipes
+(id, title, prep_time_min, cook_time_min, yields, image, ingredients, steps, created_at, category_id_id)
+VALUES(1, 'pentuza', 15, 10, 5, 'r5.jpg', '{"mayonez": "0.5l", "guruch": "200g", "tuxum": "5ta", "joxori": "250g", "olma": "4ta"}', '1 olmani  ey
+2tuxumni chaq
+3 joxori keraksiz
+4 guruch osh
+5mayonez kerakmas', '13:30:25.566721', 3);
+INSERT INTO restourant_recipes
+(id, title, prep_time_min, cook_time_min, yields, image, ingredients, steps, created_at, category_id_id)
+VALUES(2, 'Sushi Easy Receipy', 45, 30, 3, 'r1.jpg', '{"fish": "150g", "sous": "50g", "spices": "some"}', '1 baliq   baliq   baliq   baliq   baliq   baliq   baliq   baliq   baliq   baliq
+2 sous sous sous sous sous sous sous sous sous sous sous sous sous sous
+3 spices spices spices spices spices spices spices spices spices spices spices spices spices spices spices spices spices', '17:04:35.914888', 2);
+INSERT INTO restourant_recipes
+(id, title, prep_time_min, cook_time_min, yields, image, ingredients, steps, created_at, category_id_id)
+VALUES(3, 'Homemade Burger', 10, 10, 3, 'r2.jpg', '{"bread": "some", "meat": "griled", "kukat": "some"}', '1"bread":"some" "bread":"some" "bread":"some" "bread":"some" "bread":"some" "bread":"some" "bread":"some" "bread":"some" "bread":"some" "bread":"some" "bread":"some"
+2 "meat":"griled" "meat":"griled" "meat":"griled" "meat":"griled" "meat":"griled" "meat":"griled" "meat":"griled" "meat":"griled" "meat":"griled" "meat":"griled"
+3 "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some" "kukat":"some"', '17:08:15.534723', 1);
+INSERT INTO restourant_recipes
+(id, title, prep_time_min, cook_time_min, yields, image, ingredients, steps, created_at, category_id_id)
+VALUES(4, 'Calabasa soup', 1, 2, 3, 'r3.jpg', '{"saasd": "asdfsdf", "asdffds": "555", "qwert": "qwertyu"}', '1 wesrtyhijojihytre   asdfdfsdgd gdsf gfsd gs
+2 a sfdgkvsblf jnsrlgnvsdrl n
+3  cfyvubkno,dfgcfdjs', '17:22:36.935367', 5);

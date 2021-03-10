@@ -1,0 +1,85 @@
+
+{% load static %}
+{% include 'css_for_include.html' %}
+
+<div class="classynav">
+    <ul>
+        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="#">Pages</a>
+            <ul class="dropdown">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
+                <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'elements' %}">Elements</a></li>
+                <li><a href="#">Dropdown</a>
+                    <ul class="dropdown">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
+                        <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'elements' %}">Elements</a></li>
+                        <li><a href="#">Dropdown</a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'index' %}">Home</a></li>
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
+                                <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
+                                <li><a href="{% url 'elements' %}">Elements</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">Mega Menu</a>
+            <div class="megamenu">
+                <ul class="single-mega cn-col-4">
+                    <li class="title">Catagory</li>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
+                    <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'elements' %}">Elements</a></li>
+                </ul>
+                <ul class="single-mega cn-col-4">
+                    <li class="title">Catagory</li>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
+                    <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'elements' %}">Elements</a></li>
+                </ul>
+                <ul class="single-mega cn-col-4">
+                    <li class="title">Catagory</li>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
+                    <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'elements' %}">Elements</a></li>
+                </ul>
+                <div class="single-mega cn-col-4">
+                    <div class="receipe-slider owl-carousel">
+                        <a href="#"><img src="{% static 'img/bg-img/bg1.jpg' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'img/bg-img/bg6.jpg' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li><a href="{% url 'recipes' %}">Receipies</a></li>
+        <li><a href="{% url 'recipes' %}">4 Vegans</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+
+    <!-- Newsletter Form -->
+    <div class="search-btn">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+
+</div>
