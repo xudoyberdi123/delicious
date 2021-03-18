@@ -5,26 +5,24 @@
 
 
 <div class="contact-form-area">
-        <form action="{% url 'contact' %}" method="POST">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-12 col-lg-6">
-                <input type="text" class="form-control" id="name" placeholder="Name" name="username">
-            </div>
-            <div class="col-12 col-lg-6">
-                <input type="email" class="form-control" id="email" placeholder="E-mail" name="email">
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" >
-            </div>
-            <div class="col-12">
-                <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-            </div>
-            <div class="col-12">
-                <button class="btn delicious-btn mt-30" type="submit">Post Comments</button>
-            </div>
+    <form method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <input type="text" class="form-control" id="name" placeholder="Name" name="username">
         </div>
-
-
+        <div class="col-12 col-lg-6">
+            <input type="email" class="form-control" id="email" placeholder="E-mail" name="email">
+        </div>
+        <div class="col-12">
+            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" >
+        </div>
+        <div class="col-12">
+            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+        </div>
+        <div class="col-12">
+            <button class="btn delicious-btn mt-30" type="submit">Post Comments</button>
+        </div>
+    </div>
     </form>
 </div>

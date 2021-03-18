@@ -1,22 +1,19 @@
 from django.db import models
 
 
-class Suggestions(models.Model):
-    name = models.CharField(max_length=150, null=False)
-    email = models.CharField(max_length=100, null=False)
-    subject = models.TextField(blank=True)
-    message = models.TextField(blank=True)
-    created_at = models.TimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
-
-
 class Category(models.Model):
     name = models.CharField(max_length=64)
+    icon = models.ImageField()
 
     def __str__(self):
         return self.name
+
+
+class Reyting(models.Model):
+    type = models.CharField(max_length=32, null=False, default=[])
+
+    def __str__(self):
+        return self.type
 
 
 class Recipes(models.Model):
@@ -29,6 +26,7 @@ class Recipes(models.Model):
     steps = models.JSONField(null=False, blank=True)
     created_at = models.TimeField(auto_now_add=True)
     category_id = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    reyting_id = models.ForeignKey(Reyting, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.title
@@ -52,3 +50,15 @@ class BlogAndPost(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Suggestions(models.Model):
+    recipe_id = models.ForeignKey(Recipes,on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=150, null=False)
+    email = models.CharField(max_length=100, null=False)
+    subject = models.TextField(blank=True)
+    message = models.TextField(blank=True)
+    created_at = models.TimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

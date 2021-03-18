@@ -83,7 +83,7 @@
                     <nav class="classy-navbar justify-content-between" id="deliciousNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                        <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -132,6 +132,7 @@
             <div class="container">
                 <form method="post">
                     {% csrf_token %}
+                    <a href="{% url 'recipes' %}">
                     <div class="row">
                         <div class="col-12 col-lg-3">
                             <select name="select1" id="select1">
@@ -140,7 +141,6 @@
                                 {% endfor %}
                             </select>
                         </div>
-
                         <div class="col-12 col-lg-3">
                                 <input type="search" name="search" placeholder="Search Receipies">
                         </div>
@@ -148,6 +148,7 @@
                             <button type="submit" class="btn delicious-btn">Search</button>
                         </div>
                     </div>
+                    </a>
                 </form>
             </div>
         </div>
@@ -174,6 +175,7 @@
                             <span>{{ recipe.created_at }}</span>
                             <h2>{{ recipe.title }}</h2>
                             <div class="receipe-duration">
+
                                 <h6>Prep: {{ recipe.prep_time_min }} mins</h6>
                                 <h6>Cook: {{ recipe.cook_time_min }} mins</h6>
                                 <h6>Yields: {{ recipe.yields }} Servings</h6>
@@ -184,11 +186,13 @@
                     <div class="col-12 col-md-4">
                         <div class="receipe-ratings text-right my-5">
                             <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                 {% for s in star %}
+                                    {% if s <= recipe.reyting_id.id %}
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    {% elif s > recipe.reyting_id.id %}
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                             <a href="#" class="btn delicious-btn">For Begginers</a>
                         </div>
@@ -199,13 +203,13 @@
                     <div class="col-12 col-lg-8">
                         <!-- Single Preparation Step -->
 
-                        {% for i,j in recipe.steps.items %}
-
+                        {% for i in recipe.steps.values %}
+                            {% for j in i %}
                             <div class="single-preparation-step d-flex">
-                                <h4>{{ i }}.</h4>
+                                <h4>{{ forloop.counter }}.</h4>
                                 <p style="color:#34495e;">{{ j }}</p>
                             </div>
-
+                            {% endfor %}
                         {% endfor %}
 
                     </div>
@@ -218,7 +222,7 @@
                             {% for i,j in recipe.ingredients.items %}
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="{{i}}">
-                                <label class="custom-control-label" for="{{i}}">{{ i }}:{{ j }}</label>
+                                <label class="custom-control-label" for="{{i}}" style="padding:8px;">{{ i }}:{{ j }}</label>
                             </div>
                             {% endfor %}
 
@@ -237,7 +241,29 @@
                 <div class="row">
                     <div class="col-12">
 
-                        {% include 'contect_form_area.html' %}
+                       <div class="contact-form-area">
+                            <form method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <input type="hidden" name="recipe_id" value="{{recipe.id}}">
+                                <div class="col-12 col-lg-6">
+                                    <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <input type="email" class="form-control" id="email" placeholder="E-mail" name="email">
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" >
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn delicious-btn mt-30" type="submit">Post Comments</button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
 
                     </div>
                 </div>

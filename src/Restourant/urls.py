@@ -7,6 +7,4 @@ urlpatterns = [
     path("contact/", views.contact, name="contact"),
     path("recipe/<int:recipe_id>", views.recipe_with_id, name="recipe"),
     path("recipes/", views.recipes, name="recipes"),
-    path("elements/", views.elements, name="elements"),
-    path("blog-post/", views.blog_post, name="blog_post"),
 ]

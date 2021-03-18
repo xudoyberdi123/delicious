@@ -84,7 +84,7 @@
                     <nav class="classy-navbar justify-content-between" id="deliciousNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                        <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -215,16 +215,20 @@
                             <div class="single-best-receipe-area mb-30">
                                 <img src="http://127.0.0.1:8000/media/{{ i.image }}" alt="">
                                 <div class="receipe-content">
-                                    <a href="{% url 'recipe' recipe_id=i.id%}">
+                                    <a href="{% url 'recipe' recipe_id=i.id %}">
                                         <h5>{{ i.title }}</h5>
                                     </a>
-                                    <div class="ratings">
+
+                                   <div class="ratings">
+                                        {% for s in star %}
+                                        {% if s <= i.reyting_id.id %}
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        {% elif s > i.reyting_id.id %}
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        {% endif %}
+                                        {% endfor %}
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -252,235 +256,49 @@
     </section>
     <!-- ##### CTA Area End ##### -->
 
+
+
+
+
     <!-- ##### Small Receipe Area Start ##### -->
     <section class="small-receipe-area section-padding-80-0">
         <div class="container">
             <div class="row">
-
+                {% for i,j in small %}
                 <!-- Small Receipe Area -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-small-receipe-area d-flex">
                         <!-- Receipe Thumb -->
                         <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr1.jpg' %}" alt="">
+                            <img src="http://127.0.0.1:8000/media/{{ i.image }}" alt="">
                         </div>
                         <!-- Receipe Content -->
                         <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes'  %}">
-                                <h5>Homemade italian pasta</h5>
+                            <span>{{ i.created_at }}</span>
+                            <a href="{% url 'recipe' recipe_id=i.id %}">
+                                <h5>{{ i.title }}</h5>
                             </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr2.jpg' %}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes' %}">
-                                <h5>Baked Bread</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
+                                    <div class="ratings">
+                                        {% for s in star %}
+                                        {% if s <= i.reyting_id.id %}
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        {% elif s > i.reyting_id.id %}
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                            <div class="comments">{{ j }} Comments</div>
 
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr3.jpg' %}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes' %}">
-                                <h5>Scalops on salt</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr4.jpg' %}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes' %}">
-                                <h5>Fruits on plate</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr5.jpg' %}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes' %}">
-                                <h5>Macaroons</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr6.jpg' %}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes' %}">
-                                <h5>Chocolate tart</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr7.jpg' %}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes' %}">
-                                <h5>Berry Desert</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr8.jpg' %}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes' %}">
-                                <h5>Zucchini Grilled on peper</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="{% static 'img/bg-img/sr9.jpg' %}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>January 04, 2018</span>
-                            <a href="{% url 'recipes' %}">
-                                <h5>Chicken Salad</h5>
-                            </a>
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <p>2 Comments</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

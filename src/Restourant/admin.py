@@ -7,4 +7,5 @@ admin.site.register(Recipes)
 admin.site.register(Category)
 admin.site.register(BlogCategory)
 admin.site.register(BlogAndPost)
+admin.site.register(Reyting)
 

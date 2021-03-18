@@ -83,7 +83,7 @@
                     <nav class="classy-navbar justify-content-between" id="deliciousNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                        <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -184,13 +184,15 @@
                     <div class="col-12 col-md-4">
                         <div class="receipe-ratings text-right my-5">
                             <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                {% for s in star %}
+                                    {% if s <= list.reyting_id.id %}
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    {% elif s > list.reyting_id.id %}
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                            <a href="#" class="btn delicious-btn">For Begginers</a>
+                            <a href="{% url 'recipe' recipe_id=list.id %}" class="btn delicious-btn">See More</a>
                         </div>
                     </div>
                 </div>
@@ -199,13 +201,13 @@
                     <div class="col-12 col-lg-8">
                         <!-- Single Preparation Step -->
 
-                        {% for i,j in list.steps.items %}
-
+                         {% for z in list.steps.values %}
+                            {% for x in z %}
                             <div class="single-preparation-step d-flex">
-                                <h4>{{ i }}.</h4>
-                                <p style="color:#34495e;">{{ j }}</p>
+                                <h4>{{ forloop.counter }}.</h4>
+                                <p style="color:#34495e;">{{ x }}</p>
                             </div>
-
+                            {% endfor %}
                         {% endfor %}
 
                     </div>
@@ -217,33 +219,17 @@
                             <!-- Custom Checkbox -->
                             {% for i,j in list.ingredients.items %}
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="{{i}}">
-                                <label class="custom-control-label" for="{{i}}">{{ i }}:{{ j }}</label>
+                                <input type="checkbox" class="custom-control-input" id="customCheck{{i}}">
+                                <label class="custom-control-label" for="customCheck{{i}}" style="padding-left:8px;">{{ i }} : {{ j }}</label>
                             </div>
                             {% endfor %}
 
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section-heading text-left">
-                            <h3>Leave a comment</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-
-                        {% include 'contect_form_area.html' %}
-
-                    </div>
-                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 
 

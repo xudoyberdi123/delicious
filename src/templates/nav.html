@@ -9,61 +9,36 @@
             <ul class="dropdown">
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About Us</a></li>
-                <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
                 <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
-                <li><a href="{% url 'elements' %}">Elements</a></li>
-                <li><a href="#">Dropdown</a>
-                    <ul class="dropdown">
-                        <li><a href="{% url 'index' %}">Home</a></li>
-                        <li><a href="{% url 'about' %}">About Us</a></li>
-                        <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
-                        <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
-                        <li><a href="{% url 'elements' %}">Elements</a></li>
-                        <li><a href="#">Dropdown</a>
-                            <ul class="dropdown">
-                                <li><a href="{% url 'index' %}">Home</a></li>
-                                <li><a href="{% url 'about' %}">About Us</a></li>
-                                <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
-                                <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
-                                <li><a href="{% url 'contact' %}">Contact</a></li>
-                                <li><a href="{% url 'elements' %}">Elements</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </li>
         <li><a href="#">Mega Menu</a>
             <div class="megamenu">
+                {% if little_ctg %}
+                <ul class="single-mega cn-col-4">
+                    <li class="title">Little Catagory</li>
+                    {% for i in ctgs_for_nav %}
+                    <li><a href="{% url 'index' %}">{{ i }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% elif ctgs_for_nav %}
                 <ul class="single-mega cn-col-4">
                     <li class="title">Catagory</li>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About Us</a></li>
-                    <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
-                    <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                    <li><a href="{% url 'elements' %}">Elements</a></li>
+                    {% for i in ctgs_for_nav %}
+                    <li><a href="{% url 'index' %}">{{ i }}</a></li>
+                    {% endfor %}
                 </ul>
+                {% elif big_ctg %}
                 <ul class="single-mega cn-col-4">
-                    <li class="title">Catagory</li>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About Us</a></li>
-                    <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
-                    <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                    <li><a href="{% url 'elements' %}">Elements</a></li>
+                    <li class="title">Big Catagory</li>
+                    {% for i in ctgs_for_nav %}
+                    <li><a href="{% url 'index' %}">{{ i }}</a></li>
+                    {% endfor %}
                 </ul>
-                <ul class="single-mega cn-col-4">
-                    <li class="title">Catagory</li>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About Us</a></li>
-                    <li><a href="{% url 'blog_post' %}">Blog Post</a></li>
-                    <li><a href="{% url 'recipes' %}">Receipe Post</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                    <li><a href="{% url 'elements' %}">Elements</a></li>
-                </ul>
+                {% endif %}
+
+
                 <div class="single-mega cn-col-4">
                     <div class="receipe-slider owl-carousel">
                         <a href="#"><img src="{% static 'img/bg-img/bg1.jpg' %}" alt=""></a>
@@ -73,7 +48,6 @@
             </div>
         </li>
         <li><a href="{% url 'recipes' %}">Receipies</a></li>
-        <li><a href="{% url 'recipes' %}">4 Vegans</a></li>
         <li><a href="{% url 'contact' %}">Contact</a></li>
     </ul>
 
