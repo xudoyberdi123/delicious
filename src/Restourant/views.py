@@ -6,8 +6,6 @@ from .forms import SuggestionsForm
 def index(requests):
     new = NewsLetter()
     list_news_email = [i.email for i in NewsLetter.objects.all()]
-    # for i in NewsLetter.objects.all():
-    #     list_news_email.append(i.email)
     if requests.POST.get("news_email"):
         if requests.POST.get("news_email") not in list_news_email:
             new.email = requests.POST.get("news_email")
