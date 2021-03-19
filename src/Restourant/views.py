@@ -5,9 +5,9 @@ from .forms import SuggestionsForm
 
 def index(requests):
     new = NewsLetter()
-    list_news_email = []
-    for i in NewsLetter.objects.all():
-        list_news_email.append(i.email)
+    list_news_email = [i.email for i in NewsLetter.objects.all()]
+    # for i in NewsLetter.objects.all():
+    #     list_news_email.append(i.email)
     if requests.POST.get("news_email"):
         if requests.POST.get("news_email") not in list_news_email:
             new.email = requests.POST.get("news_email")
@@ -104,7 +104,7 @@ def about(requests):
         "all_ctg": ctg_counter_all,
         "ctgs_for_nav": ctgs_for_nav
 
-        }
+    }
     return render(requests, "about.html", ctx)
 
 
@@ -120,9 +120,7 @@ def blog_post(requests):
 
 def contact(requests):
     new = NewsLetter()
-    list_news_email = []
-    for i in NewsLetter.objects.all():
-        list_news_email.append(i.email)
+    list_news_email = [i.email for i in NewsLetter.objects.all()]
     if requests.POST.get("news_email"):
         if requests.POST.get("news_email") not in list_news_email:
             new.email = requests.POST.get("news_email")
