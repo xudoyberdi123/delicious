@@ -53,7 +53,7 @@ class BlogAndPost(models.Model):
 
 
 class Suggestions(models.Model):
-    recipe_id = models.ForeignKey(Recipes,on_delete=models.SET_NULL, null=True)
+    recipe_id = models.ForeignKey(Recipes, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=150, null=False)
     email = models.CharField(max_length=100, null=False)
     subject = models.TextField(blank=True)
@@ -62,3 +62,22 @@ class Suggestions(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=150, null=False)
+    email = models.CharField(max_length=100, null=False)
+    subject = models.TextField(blank=True)
+    message = models.TextField(blank=True)
+    created_at = models.TimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+class NewsLetter(models.Model):
+    email = models.CharField(max_length=150)
+    created_at = models.TimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email

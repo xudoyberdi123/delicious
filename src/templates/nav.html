@@ -19,21 +19,21 @@
                 <ul class="single-mega cn-col-4">
                     <li class="title">Little Catagory</li>
                     {% for i in ctgs_for_nav %}
-                    <li><a href="{% url 'index' %}">{{ i }}</a></li>
+                    <li><a href="{% url 'recipes' %}">{{ i }}</a></li>
                     {% endfor %}
                 </ul>
                 {% elif ctgs_for_nav %}
                 <ul class="single-mega cn-col-4">
                     <li class="title">Catagory</li>
                     {% for i in ctgs_for_nav %}
-                    <li><a href="{% url 'index' %}">{{ i }}</a></li>
+                    <li><a href="{% url 'recipes' %}">{{ i }}</a></li>
                     {% endfor %}
                 </ul>
                 {% elif big_ctg %}
                 <ul class="single-mega cn-col-4">
                     <li class="title">Big Catagory</li>
                     {% for i in ctgs_for_nav %}
-                    <li><a href="{% url 'index' %}">{{ i }}</a></li>
+                    <li><a href="{% url 'recipes' %}">{{ i }}</a></li>
                     {% endfor %}
                 </ul>
                 {% endif %}

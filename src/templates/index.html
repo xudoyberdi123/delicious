@@ -265,34 +265,36 @@
         <div class="container">
             <div class="row">
                 {% for i,j in small %}
-                <!-- Small Receipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <!-- Receipe Thumb -->
-                        <div class="receipe-thumb">
-                            <img src="http://127.0.0.1:8000/media/{{ i.image }}" alt="">
-                        </div>
-                        <!-- Receipe Content -->
-                        <div class="receipe-content">
-                            <span>{{ i.created_at }}</span>
-                            <a href="{% url 'recipe' recipe_id=i.id %}">
-                                <h5>{{ i.title }}</h5>
-                            </a>
+                    {% if forloop.counter0 < 9 %}
+                        <!-- Small Receipe Area -->
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="single-small-receipe-area d-flex">
+                                <!-- Receipe Thumb -->
+                                <div class="receipe-thumb">
+                                    <img src="http://127.0.0.1:8000/media/{{ i.image }}" alt="">
+                                </div>
+                                <!-- Receipe Content -->
+                                <div class="receipe-content">
+                                    <span>{{ i.created_at }}</span>
+                                    <a href="{% url 'recipe' recipe_id=i.id %}">
+                                        <h5>{{ i.title }}</h5>
+                                    </a>
 
-                                    <div class="ratings">
-                                        {% for s in star %}
-                                        {% if s <= i.reyting_id.id %}
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        {% elif s > i.reyting_id.id %}
-                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </div>
-                            <div class="comments">{{ j }} Comments</div>
+                                            <div class="ratings">
+                                                {% for s in star %}
+                                                {% if s <= i.reyting_id.id %}
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                {% elif s > i.reyting_id.id %}
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                    <div class="comments">{{ j }} Comments</div>
 
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    {% endif %}
                 {% endfor %}
 
 
@@ -327,8 +329,9 @@
                         <h4>Subscribe to our newsletter</h4>
                         <!-- Form -->
                         <div class="newsletter-form bg-img bg-overlay" style="background-image: url({% static 'img/bg-img/bg1.jpg' %});">
-                            <form action="{% url 'contact' %}" method="post">
-                                <input type="email" name="email" placeholder="Subscribe to newsletter">
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="email" name="news_email" placeholder="Subscribe to newsletter">
                                 <button type="submit" class="btn delicious-btn w-100">Subscribe</button>
                             </form>
                             <p>Fusce nec ante vitae lacus aliquet vulputate. Donec sceleri sque accumsan molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>

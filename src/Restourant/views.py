@@ -4,6 +4,15 @@ from .forms import SuggestionsForm
 
 
 def index(requests):
+    new = NewsLetter()
+    list_news_email = []
+    for i in NewsLetter.objects.all():
+        list_news_email.append(i.email)
+    if requests.POST.get("news_email"):
+        if requests.POST.get("news_email") not in list_news_email:
+            new.email = requests.POST.get("news_email")
+            new.save()
+
     recipies = Recipes.objects.all().order_by("-created_at")
     ctgs_for_nav = Category.objects.all()
     small_comment = []
@@ -22,7 +31,7 @@ def index(requests):
 def recipes(requests):
     ctgs_for_nav = Category.objects.all()
     # noinspection SpellCheckingInspection
-    recipies = Recipes.objects.all()
+    recipies = Recipes.objects.all().order_by("-created_at")
     ctg = Category.objects.all()
     l1 = []
     if requests.GET:
@@ -76,13 +85,12 @@ def about(requests):
     all_recipes_leng = len(all_recipes)
     ctg_counter_all = {}
 
-
     for i in all_recipes:
         for j in all_ctg:
             if j.name == i.category_id.name:
                 ctg_counter_all[j.name] = [len(Recipes.objects.filter(category_id=j.id)), j]
 
-    sgt = Suggestions()
+    sgt = ContactUs()
     if requests.POST:
         sgt.name = requests.POST.get("username")
         sgt.email = requests.POST.get("email")
@@ -111,9 +119,18 @@ def blog_post(requests):
 
 
 def contact(requests):
+    new = NewsLetter()
+    list_news_email = []
+    for i in NewsLetter.objects.all():
+        list_news_email.append(i.email)
+    if requests.POST.get("news_email"):
+        if requests.POST.get("news_email") not in list_news_email:
+            new.email = requests.POST.get("news_email")
+            new.save()
+
     ctgs_for_nav = Category.objects.all()
-    sgt = Suggestions()
-    if requests.POST:
+    sgt = ContactUs()
+    if requests.POST.get("email"):
         sgt.name = requests.POST.get("username")
         sgt.email = requests.POST.get("email")
         sgt.subject = requests.POST.get("subject")
